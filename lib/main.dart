@@ -2,25 +2,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:weather_app/provider/weather_provider.dart';
-import 'package:weather_app/screens/home/home_page.dart';
-
-import 'di_container.dart' as di;
+import 'package:weather_app/screens/auth/login_screen.dart';
+import 'package:weather_app/util/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await di.init();
-  WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) =>runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (context) => di.sl<WeatherProvider>()),
-
-
-    ],
-    child: const MyApp(),
-  ) )
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) =>runApp( const MyApp(),)
   );
 }
 
@@ -38,12 +26,12 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child)
       { return MaterialApp(
           title: 'Help Adobe',
-          // theme: Provider.of<ThemeProvider>(context).darkTheme ? AppTheme.getDarkModeTheme() : AppTheme.getLightModeTheme(),
+           theme:AppTheme.getLightModeTheme(),
           debugShowCheckedModeBanner: false,
           scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch}),
           home: child
       ); },
-      child: const HomePageScreen(),
+      child: const LoginScreen(),
     );
   }
 }

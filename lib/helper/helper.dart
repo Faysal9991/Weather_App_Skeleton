@@ -1,9 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:weather_app/helper/animation/sideleft_toright..dart';
 import 'package:weather_app/helper/animation/sideright_toleft.dart';
-import 'package:weather_app/util/theme/apps_colors.dart';
+import 'package:weather_app/util/theme/app_colors.dart';
 
 showLog(message) {
   log("APP SAYS: $message");

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather_app/util/theme/apps_colors.dart';
+import 'package:weather_app/util/theme/app_colors.dart';
 
 const TextStyle headline1 = TextStyle(fontWeight: FontWeight.w600, color: AppColors.black, fontSize: 24);
 const TextStyle headline2 = TextStyle(fontWeight: FontWeight.w600, color: AppColors.black, fontSize: 20);

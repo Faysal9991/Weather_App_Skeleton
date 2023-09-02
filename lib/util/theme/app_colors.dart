@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 const Color colorPrimaryLight = Color(0xFF06113E);
-const Color colorPrimaryDark = Color(0xFFF9C45A);
+const Color colorPrimaryDark = Color(0xFF0059d4);
 const Color online = Color(0xFF4BCB1F);
-const backgroundColor =   Color(0xFFf5f5f5);
+const kPrimaryColor = Color(0xFF06113E);
 const kSecondaryColor = Color(0xFFE7F3FF);
 const lightWhiteColor = Color(0xFFFAFAFA);
 const kContentColorLightTheme = Color(0xFF1D1D35);
@@ -21,30 +21,27 @@ const Color feedback = Color(0xFF2365A8);
 
 class AppColors {
   //TODO: for Light Theme color
-  static const Color primaryColorLight = Color(0xFF06113E);
+  static const Color primaryColorLight = Color(0xFF0059d4);
   static const Color hintTextColorLight = Color(0xff9E9E9E);
   static const Color imageBGColorLight = Color(0xffE2F0FF);
   static const Color whiteColorLight = Color(0xFFFFFFFF);
   static const Color unreadColorLight = Color(0xFF00ACFF);
-  static const Color logoColorSecondryLight = Color(0xFFDEF0E8);
 
   //TODO: for Dark Theme Color
-  static const Color primaryColorDark = Color(0xFFF9C45A);
+  static const Color primaryColorDark = Color(0xff006bff);
   static const Color hintTextColorDark = Color(0xff9E9E9E);
   static const Color imageBGColorDark = Color(0xffE2F0FF);
   static const Color whiteColorDark = Color(0xFFFFFFFF);
   static const Color unreadColorDark = Color(0xFF00ACFF);
+  static const Color textColor = Color(0xFFE6E6E6);
+  static const Color textFieldColorDark = Color(0xFF333333);
 
-  static const Color scaffold = Colors.white;
+  static const Color scaffold = Color(0xFFF0F2F5);
   static const LinearGradient createRoomGradient = LinearGradient(colors: [Color(0xFF496AE1), Color(0xFFCE48B1)]);
   static const Color textFont = Color(0xFF000000);
-  static const Color boxColor =  Color(0xffF8F9F9);
   static const Color timeColor = Color(0xFFFF8C31);
-  static const Color loginTextColor = Color(0xFFAAA6A6);
-  static const Color borderColor = Color(0xFFE9E9E9);
-  static const Color primaryColor= Color(0xFF008951);
 
-  static const Color dividerColor = Color(0xffF0F0F0);
+  static const Color homeBG = Color(0xffF0F0F0);
   static const Color redColor = Color(0xffFF0000);
   static const Color columbiaBlue = Color(0xff92C6FF);
   static const Color accentColor = Color(0xFFE6A537);
@@ -52,8 +49,6 @@ class AppColors {
   static const Color postLikeCommentContainer = Color(0xffDDEFFD);
   static const Color postLikeCountContainer = Color(0xff195FC7);
   static const Color black = Color(0xFF252525);
-  static const Color ligthGreen = Color(0xFFD5E7E0);
-  static const Color lightRed = Color(0xFFFFF1F1);
   static const Color iconBg = Color(0xffF9F9F9);
   static const Color grey = Color(0xFF909090);
   static const Color lowGreen = Color(0xffEFF6FE);
