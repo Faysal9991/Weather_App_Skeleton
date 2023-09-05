@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/helper/helper.dart';
+import 'package:weather_app/provider/authprovider.dart';
 import 'package:weather_app/screens/auth/views/sign_up_Screen.dart';
 import 'package:weather_app/screens/home/home_screen.dart';
 import 'package:weather_app/util/custom_text_field.dart';
@@ -15,6 +17,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController =  TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +43,17 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(
             height: 20,
           ),
-          const Padding(
+           Padding(
             padding: EdgeInsets.only(left: 20,right: 20,bottom: 10),
-            child: CustomTextField(borderRadius: 30,fillColor: Colors.white,isShowBorder: true,verticalSize: 15,horizontalSize: 20,hintText: "Email",)),
+            child: CustomTextField(
+              controller: emailController,
+              borderRadius: 30,fillColor: Colors.white,isShowBorder: true,verticalSize: 15,horizontalSize: 20,hintText: "Email",)),
         
-           const Padding(
+            Padding(
              padding: EdgeInsets.only(left: 20,right: 20,bottom: 10),
-            child: CustomTextField(borderRadius: 30,fillColor: Colors.white,isShowBorder: true,verticalSize: 15,horizontalSize: 20,hintText: "Password",)),
+            child: CustomTextField(
+              controller: passwordController,
+              borderRadius: 30,fillColor: Colors.white,isShowBorder: true,verticalSize: 15,horizontalSize: 20,hintText: "Password",)),
          const SizedBox(
             height: 20,
           ),
@@ -89,7 +97,14 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SizedBox(
         width: double.infinity,
         height: 40,
-        child: ElevatedButton(onPressed: (){Helper.toScreen(context, const HomePage());},child: const Text("login"),)),
+        child: Consumer<AuthProvider>(
+          
+          builder: (context, provider,child) {
+            return ElevatedButton(onPressed: (){
+             provider.signIn(emailController.text, passwordController.text).then((value){if(value){  Helper.toScreen(context, const HomePage());}});
+            },child: const Text("login"),);
+          }
+        )),
             )
        ],
       ),

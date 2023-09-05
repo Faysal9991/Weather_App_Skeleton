@@ -1,14 +1,28 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:weather_app/firebase_options.dart';
+import 'package:weather_app/provider/authprovider.dart';
 import 'package:weather_app/screens/auth/login_screen.dart';
 import 'package:weather_app/util/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) =>runApp( const MyApp(),)
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) =>runApp( MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => AuthProvider()),
+
+    ],
+    child:  MyApp(),
+    ))
   );
 }
 
@@ -28,6 +42,7 @@ class MyApp extends StatelessWidget {
           title: 'Help Adobe',
            theme:AppTheme.getLightModeTheme(),
           debugShowCheckedModeBanner: false,
+         builder: EasyLoading.init(),
           scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch}),
           home: child
       ); },

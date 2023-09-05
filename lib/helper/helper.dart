@@ -35,8 +35,8 @@ class Helper {
   static back(context) {
     Navigator.pop(context);
   }
-  static toReplacementScreenSlideRightToLeft(screen) {
-    Navigator.pushReplacement(navigatorKey.currentState!.context, SlideRightToLeft(page: screen));
+  static toReplacementScreenSlideRightToLeft(screen,BuildContext context) {
+    Navigator.pushReplacement(context, SlideRightToLeft(page: screen));
   }
 
   static toReplacementScreenSlideLeftToRight(screen) {

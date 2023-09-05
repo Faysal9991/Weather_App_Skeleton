@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/util/custom_text_field.dart';
 import 'package:weather_app/util/theme/app_colors.dart';
 import 'package:weather_app/util/theme/text.style.dart';
 import 'package:weather_app/util/widgets/custom_appbar.dart';
@@ -17,21 +16,26 @@ class _DepositScreenState extends State<DepositScreen> {
 "50",
 "100",
 "120",
-"150",
-"200",
-"250",
-"300"
 ];
  List money =[
 "Taka",
-"30",
+"50",
 "70",
 "90",
-"110",
-"150",
-"180",
-"190"
-
+  ];
+   List vip =[
+"SMS",
+"300",
+"420",
+"800",
+"unlimited"
+  ];
+   List tikit =[
+"Taka",
+"200",
+"300",
+"500",
+"700"
   ];
   @override
   Widget build(BuildContext context) {
@@ -63,6 +67,7 @@ class _DepositScreenState extends State<DepositScreen> {
            ),)),
           
          ListView.builder(
+          padding: EdgeInsets.zero,
           shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
           itemCount: sms.length,
@@ -81,7 +86,39 @@ class _DepositScreenState extends State<DepositScreen> {
                   ]),
             ),
           );
-         })
+         }),
+
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 20),
+  child:   Container(
+    height: 50,
+    width: width,
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white),
+    child: Center(child: Text("VIP Zone",style: latoStyle800ExtraBold,)),
+  ),
+),
+           ListView.builder(
+            padding: EdgeInsets.zero,
+          shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+          itemCount: vip.length,
+          itemBuilder: (context,index){
+          return Padding(
+            padding: const EdgeInsets.only(left: 20,right: 20,top: 1),
+            child: Container(
+              height: 40,
+                  width: width,
+                  decoration: BoxDecoration(color: Colors.lightBlue,borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+            Text("${vip[index]}",style: latoStyle700Bold.copyWith(color: Colors.white,fontSize: 14),),
+             Text("${tikit[index]}",style: latoStyle700Bold.copyWith(color: Colors.white,fontSize: 14),)
+                  ]),
+            ),
+          );
+         }),
+          SizedBox(height: 100,)
           ]),
       ),
  

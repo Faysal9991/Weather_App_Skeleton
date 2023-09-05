@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "490371470024",
+    "project_id": "sms-buy-sell",
+    "storage_bucket": "sms-buy-sell.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490371470024:android:ff27d1943741d494480bfd",
+        "android_client_info": {
+          "package_name": "com.example.weather_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490371470024-q7b1ehlqej6cdt5728cevbakmjii67h2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.weather_app",
+            "certificate_hash": "c5aef4fef9107996580ab39f4076a367a9e32769"
+          }
+        },
+        {
+          "client_id": "490371470024-nvb47ribcrusebv1kuulsggus2t9ikis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm5YE9uLNn-UHMulqwgUuzQH1IQHF07WY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490371470024-nvb47ribcrusebv1kuulsggus2t9ikis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
