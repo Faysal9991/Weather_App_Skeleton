@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -15,6 +13,7 @@ class AuthProvider with ChangeNotifier {
   UserModel userModel = UserModel();
   dynamic profile;
    bool isLogin = false;
+   bool isLoading = false;
    dynamic response;
     String?  userId;
     Future <bool> signUp(
@@ -78,4 +77,29 @@ final SharedPreferences prefs = await SharedPreferences.getInstance();
       }
     }
 
+
+getUserDetails()async{
+  isLoading = true;
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  String id = prefs.getString("userId")!;
+await firestore.collection("users").doc(id).get().then((value){ userModel = UserModel.fromJson(value.data() as Map<String,dynamic>);
+
+ isLoading = false;
+    notifyListeners();
+      });
+}
+ Future <bool> getLoginAccess()async{
+     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  if(
+ sharedPreferences.get("userId")!= null
+  ){
+    return true;
+  }else{
+    return false;
+  }
+ }
+ logout()async{
+   final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.remove("userId");
+ }
 }

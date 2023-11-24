@@ -39,12 +39,12 @@ class Helper {
     Navigator.pushReplacement(context, SlideRightToLeft(page: screen));
   }
 
-  static toReplacementScreenSlideLeftToRight(screen) {
-    Navigator.pushReplacement(navigatorKey.currentState!.context, SlideLeftToRight(page: screen));
+  static toReplacementScreenSlideLeftToRight(screen,BuildContext context) {
+    Navigator.pushReplacement(context, SlideLeftToRight(page: screen));
   }
 
-  static toRemoveUntilScreen(screen) {
-    Navigator.pushAndRemoveUntil(navigatorKey.currentState!.context, SlideRightToLeft(page: screen), (route) => false);
+  static toRemoveUntilScreen(BuildContext context,screen) {
+    Navigator.pushAndRemoveUntil(context, SlideRightToLeft(page: screen), (route) => false);
   }
 
   static onWillPop(screen) {

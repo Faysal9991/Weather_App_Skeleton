@@ -13,7 +13,7 @@ class UserModel {
     String? email;
     String? phoneNumber;
     String? uid;
-    String? balance;
+    String? balance ="0";
     String? isLogin;
 
     UserModel({

@@ -5,9 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app/admin/admin.dart';
 import 'package:weather_app/firebase_options.dart';
+import 'package:weather_app/mobile_info_get/mobile_info.dart';
+import 'package:weather_app/provider/admin.provider.dart';
 import 'package:weather_app/provider/authprovider.dart';
 import 'package:weather_app/screens/auth/login_screen.dart';
+import 'package:weather_app/splash_screen.dart';
 import 'package:weather_app/util/theme/app_theme.dart';
 
 void main() async {
@@ -19,7 +23,8 @@ void main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) =>runApp( MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => AuthProvider()),
-
+   ChangeNotifierProvider(create: (context) => AdminProvider()),
+   ChangeNotifierProvider(create: (context) => MobileInfoProvider()),
     ],
     child:  MyApp(),
     ))
@@ -46,7 +51,7 @@ class MyApp extends StatelessWidget {
           scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch}),
           home: child
       ); },
-      child: const LoginScreen(),
+      child: const SplashScreen(),
     );
   }
 }
