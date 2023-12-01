@@ -64,18 +64,20 @@ class _CustomConatinerButtonState extends State<CustomConatinerButton> {
            Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            const CircleAvatar(
-              radius: 40,
-              backgroundColor: Colors.black,
-              child: CircleAvatar(
-                radius: 38,
-                backgroundColor: Colors.white,
-                child:Icon(Icons.person,size: 50,color: Colors.pink,),
-                ),
-            ),
+
             const Spacer(),
-
-
+              InkWell(
+                onTap: (){
+                  var whatsappUrl ="whatsapp://send?phone=${adminProvider.whatsApp}";
+                  launchUrl(Uri.parse(whatsappUrl));
+                },
+                child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: AppColors.scaffold),
+                    child:  Center(child:FaIcon(FontAwesomeIcons.whatsapp,color:Colors.pink,size: 20,),)),
+              ),
+SizedBox(width: 5,),
        adminProvider.notification!["is"]?  InkWell(
             onTap: (){
  showDialog(

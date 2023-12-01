@@ -25,6 +25,7 @@ class _AdminScreenState extends State<AdminScreen> {
    TextEditingController nodog = TextEditingController();
       TextEditingController notification = TextEditingController();
       TextEditingController whatsApp = TextEditingController();
+      TextEditingController paymentText = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +40,7 @@ class _AdminScreenState extends State<AdminScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
               children: [
+
                 ElevatedButton(onPressed: (){
                   Helper.toScreen(context, LoginScreen());
                 }, child: Text("Go to login screen")),
@@ -75,6 +77,14 @@ class _AdminScreenState extends State<AdminScreen> {
                    adminProvider.updateWhatsApp(whatsApp.text);
                      setState(() {});
                  }, child: Text("Submit")),
+                CustomTextField(
+                  hintText: "Add payment text",
+                  controller: paymentText,
+                ),
+                ElevatedButton(onPressed: (){
+                  adminProvider.updateText(paymentText.text);
+                  setState(() {});
+                }, child: Text("Submit")),
                 ListView.builder(
                   itemCount: adminProvider.data.length,
                   shrinkWrap: true,
@@ -126,7 +136,8 @@ class _AdminScreenState extends State<AdminScreen> {
                     ),
                   );
                 }
-                )
+                ),
+                SizedBox(height: 500,),
               ],
               ),
             ),

@@ -18,6 +18,7 @@ class AdminProvider with ChangeNotifier{
 getBkashNogodNumber()async{
   isLoading =  true;
   number = await firestore.collection("admin").doc("number").get();
+
  whatsApp =number!["whatsApp"];
  isLoading = false;
  notifyListeners();
@@ -72,17 +73,28 @@ firestore.collection("admin").doc("user").set({"request": data});
  EasyLoading.showSuccess("submit done");
 notifyListeners();
 }
+      UserModel userModel = UserModel();
+addblance(String UserId,String  ammount,int Index)async{
+  await firestore.collection("users").doc(UserId).get().then((value) {
+    userModel = UserModel.fromJson(value.data() as Map<String, dynamic>);
+    int initialblance = int.parse(userModel.balance!);
+    int reqblance = int .parse(ammount);
+    var total = initialblance+reqblance;
+    firestore.collection("users").doc(UserId).update({"balance": total.toString()});
+    data.removeAt(Index);
+    firestore.collection("admin").doc("user").set({"request": data});
+    EasyLoading.showSuccess("submit done");
+    notifyListeners();
+  });
 
-addblance(String UserId,String  ammount,int Index){
-  
-firestore.collection("users").doc(UserId).update({"balance": ammount});
-data.removeAt(Index);
-firestore.collection("admin").doc("user").set({"request": data});
- EasyLoading.showSuccess("submit done");
-notifyListeners();
+
+
+
+
+
 }
 
-      UserModel userModel = UserModel();
+
      Future requestCutBalance(String UserId,)async{
         await firestore.collection("users").doc(UserId).get().then((value) {
           userModel = UserModel.fromJson(value.data() as Map<String, dynamic>);
@@ -137,11 +149,28 @@ updateNotification(String notification){
     firestore.collection("admin").doc("alart").update({"notification":notification});
      EasyLoading.showSuccess("submit done");
   }
-    
- 
  isLoading = false;
  notifyListeners();
 }
+
+updateText(String text)async{
+    isLoading =  true;
+    await firestore.collection("text").doc("payment").set({"paymentText":text});
+    EasyLoading.showSuccess("submit done");
+    isLoading = false;
+    notifyListeners();
+}
+ String paymnetText = "";
+     getText()async{
+        isLoading =  true;
+      await  firestore.collection("text").doc("payment").get().then((value) {
+        paymnetText= value["paymentText"];
+        notifyListeners();
+        });
+        EasyLoading.showSuccess("submit done");
+        isLoading = false;
+        notifyListeners();
+      }
 }
 
 

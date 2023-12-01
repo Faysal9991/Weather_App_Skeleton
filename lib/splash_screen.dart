@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/helper/helper.dart';
 import 'package:weather_app/provider/authprovider.dart';
@@ -24,13 +23,13 @@ class _SplashScreenState extends State<SplashScreen> {
    
   
         Future.delayed(
-         Duration(seconds: 3),
+         const Duration(seconds: 3),
       (){
 Provider.of<AuthProvider>(context,listen: false).getLoginAccess().then((value){
   if(value){
-    Helper.toScreen(context, HomePage());
+    Helper.toScreen(context, const HomePage());
   }else{
-    Helper.toScreen(context, LoginScreen());
+    Helper.toScreen(context, const LoginScreen());
   }
 });
       }
@@ -45,7 +44,7 @@ Provider.of<AuthProvider>(context,listen: false).getLoginAccess().then((value){
         child: Column(mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-             Lottie.asset('assets/ani.json'),
+
              Text("Check user Location",style: latoStyle800ExtraBold.copyWith(color: Colors.lightBlue,fontSize: 20),)
           ],
         ),

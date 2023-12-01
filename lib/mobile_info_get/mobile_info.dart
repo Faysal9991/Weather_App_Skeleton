@@ -37,6 +37,7 @@ class MobileInfoProvider with ChangeNotifier {
       phoneInfo =PhoneInfo.fromJson( jsonDecode(await result.transform(utf8.decoder)
           .join()));
       isloading = false;
+
       notifyListeners();
 
     } else {

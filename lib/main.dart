@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/admin/admin.dart';
 import 'package:weather_app/firebase_options.dart';
 import 'package:weather_app/mobile_info_get/mobile_info.dart';
 import 'package:weather_app/provider/admin.provider.dart';
